@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest>=8
+amqtt>=0.11      # only for tools/mqtt_broker_dev.py (local test broker)

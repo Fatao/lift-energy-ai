@@ -1,0 +1,16 @@
+# Start:  docker compose up -d --build        Open: http://localhost:8000
+# All settings (APP_PASSWORD, API keys, MQTT_URL ...) come from the .env file next to this file.
+services:
+  lift-energy:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - lift-data:/data        # the database survives restarts and rebuilds
+    restart: unless-stopped
+    # RS-485 on a Linux machine: uncomment, and set MODBUS_PORT=/dev/ttyUSB0 in .env
+    # devices:
+    #   - /dev/ttyUSB0:/dev/ttyUSB0
+volumes:
+  lift-data:

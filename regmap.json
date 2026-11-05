@@ -1,0 +1,10 @@
+{
+  "function": 3,
+  "start": 0,
+  "count": 6,
+  "fields": {
+    "kwh":   { "offset": 0, "type": "uint32", "scale": 0.01 },
+    "trips": { "offset": 2, "type": "uint32", "scale": 1 },
+    "doors": { "offset": 4, "type": "uint32", "scale": 1 }
+  }
+}
