@@ -5,7 +5,7 @@ export type Lang = "ru" | "en";
 const en = {
   "app.name": "Lift Energy AI",
   "app.tag": "Elevator energy monitoring",
-  "nav.dashboard": "Overview",
+  "nav.dashboard": "Dashboard",
   "nav.anomalies": "Anomalies",
   "nav.compare": "Compare lifts",
   "nav.forecast": "Forecast",

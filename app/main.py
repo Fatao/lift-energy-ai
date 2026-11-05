@@ -84,7 +84,7 @@ def api_login(request: Request, body: dict = Body(...)):
         raise HTTPException(429, f"Too many attempts. Try again in {wait} s.")
     if not auth.check_credentials(body.get("user", ""), body.get("password", "")):
         auth.record_failure(ip)
-        raise HTTPException(401, "Wrong user name or password")
+        raise HTTPException(401, "Неправильное имя пользователя или пароль")
     auth.clear_failures(ip)
     secure = request.headers.get("x-forwarded-proto", request.url.scheme) == "https"
     resp = JSONResponse({"ok": True})
