@@ -1,21 +1,28 @@
-# Render "Blueprint": New + -> Blueprint -> pick your GitHub repo. Free plan, builds the Dockerfile.
 services:
   - type: web
     name: lift-energy-ai
     runtime: docker
     plan: free
     healthCheckPath: /api/health
-    autoDeploy: true            # every git push to the main branch redeploys the site
+    autoDeploy: true
     envVars:
       - key: APP_USER
         value: admin
-      - key: APP_PASSWORD       # Render asks you for the value when you create the service
+      - key: APP_PASSWORD
         sync: false
+      - key: LLM_PROVIDER        # gemini or gigachat
+        value: gemini
       - key: GEMINI_API_KEY
         sync: false
-      - key: LLM_PROVIDER
-        value: gemini
       - key: GEMINI_MODEL
         value: gemini-3.8-flash
-      - key: SEED_FILE          # the disk is wiped on restart, so the sample data is re-imported at start
+      - key: GIGACHAT_CREDENTIALS   # authorization key from developers.sber.ru
+        sync: false
+      - key: GIGACHAT_SCOPE
+        value: GIGACHAT_API_PERS
+      - key: GIGACHAT_MODEL
+        value: GigaChat
+      - key: GIGACHAT_VERIFY_SSL_CERTS   # Sber uses a Russian CA that Render's image does not trust
+        value: "false"
+      - key: SEED_FILE
         value: sample/test_data_30days.xlsx
