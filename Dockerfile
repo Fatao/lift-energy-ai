@@ -16,6 +16,7 @@ COPY app ./app
 COPY tools ./tools
 COPY regmap.example.json ./
 COPY sample ./sample
+COPY certs ./certs
 COPY --from=web /web/dist ./frontend/dist
 RUN useradd -m app && mkdir /data && chown app /data
 USER app
